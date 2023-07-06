@@ -984,12 +984,12 @@ function dataclean_plugin(position,data){
     switch(position){
         case "TI":
             try{
-                data = myrisdata.replace(/<sub>|<\/sub>|<sup>|<\/sup>/g, "")
+                data = data.replace(/<sub>|<\/sub>|<sup>|<\/sup>/g, "")
             }catch(e){};
             break;
         case "T2":
             try{
-                data = myrisdata.replace(/\&amp;/g,"&")
+                data = data.replace(/\&amp;/g,"&")
             }catch(e){};
             break;
     }
