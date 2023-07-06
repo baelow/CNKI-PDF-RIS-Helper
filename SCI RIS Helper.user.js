@@ -981,19 +981,18 @@ function journalMetasAdaptor() {
 
 function dataclean_plugin(position,data){
     if (plugin_mode === 1){
-    var myrisdata = data;
     switch(position){
         case "TI":
             try{
-                myrisdata = myrisdata.replace(/<sub>/g,"").replace(/<\/sub>/g,"").replace(/<sup>/g,"").replace(/<\/sup>/g,"")
+                data = myrisdata.replace(/<sub>|<\/sub>|<sup>|<\/sup>/g, "")
             }catch(e){};
             break;
         case "T2":
             try{
-                myrisdata = myrisdata.replace(/\&amp;/g,"&")
+                data = myrisdata.replace(/\&amp;/g,"&")
             }catch(e){};
             break;
     }
-    return myrisdata
+    return data
 }else{return data}
 }
