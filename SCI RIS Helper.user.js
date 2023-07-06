@@ -141,11 +141,13 @@ let bestScihubHost = SCI_HUB_HOST[0];
 
 const PDF_SCIHUB_FIRST = false; // SCI-HUB or JOURNAL first
 const MaxRetryTimes = 5;
+const plugin_mode = 1;
 
 let METAS;
 let RIS;
 let Timer;
 let HasTriedTimes = 0;
+
 
 addEvents();
 
@@ -278,7 +280,6 @@ function generateTheButton(ris) {
             ris = __setKeyForRis(ris, 'L1', '')
         }
         const UF = generateRisBlob(ris);
-        console.log("====TEST=====,",UF)
         $("#" + event.currentTarget.id).attr("href", UF.blob);
         $("#" + event.currentTarget.id).attr("download", UF.name);
         getCountFromCuger(key);
@@ -979,6 +980,7 @@ function journalMetasAdaptor() {
 }
 
 function dataclean_plugin(position,data){
+    if (plugin_mode === 1){
     var myrisdata = data;
     switch(position){
         case "TI":
@@ -993,4 +995,5 @@ function dataclean_plugin(position,data){
             break;
     }
     return myrisdata
+}else{return data}
 }
